@@ -703,8 +703,8 @@
     \begin{theorem}[Approximation properties of Neural Networks (Sketch)]
         \begin{enumerate}
             \setcounter{enumi}{-1}
-            \item Given a function $f\in C^{(0,1)(\Omega)}$ to be approximated by $\nn$, $\Omega\in\R^{m_0}$ compact.
-            \item Both shallow (small $L$) and deep (large $L$) NN can compute the best approximation of $f$ in finitely many steps.
+            \item Given a function $f\in C^{(0,1)}(\Omega)$ to be approximated by $\nn$, $\Omega\in\R^{m_0}$ compact.
+            \item Both shallow (small fixed $L$) and deep (large $L$) NN can compute the best approximation of $f$ in finitely many steps.
             \item Let $M$ be complexity needed to surely attain accuracy $\varepsilon>0$.
                 \begin{itemize}
                     \item If $L=1$, need to increase $m_1$ \emph{exponentially} to attain $\varepsilon>0$.
@@ -724,7 +724,7 @@
         \item {\bf Initialisation:} Find ``smart'' way to initialise minimisation.
         \item {\bf Train/Test set:} $\dataset=\dataset_{\text{train}}\dot{\cup} \dataset_{\text{test}}$, usually $\frac{\left|\dataset_{\text{train}}\right|}{\left|\dataset\right|} \in [0.6, 0.9]$.
         \item {\bf Bias-Variance tradeoff:} $\nn$ needs to fit the data \emph{reasonably} well, but still extrapolate on unknown data.
-        \item {\bf ``Magic'':} Many heuristic tweaks, not fully understood why they work well.
+        \item {\bf ``Magic'':} Many heuristic tweaks.
         \item ``Deep'': $L\simeq$``depth'' of $\nn$. The deeper the network, the more complex the learned features.
     \end{enumerate}
 \end{frame}
@@ -896,6 +896,11 @@
         \item Recurrent Neural Networks (RNNs), Residual Networks, Generative Adversarial Networks, U-Nets, ...
         \item {\bf RNNs:} If your data is \emph{sequential} (e.g.~Time series, Music, Natural Language), there is a type of neuron that learns to predict the next value: \emph{Long short-term memory cells} (LSTM).
     \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Thank you.}
+    \centering {\bf Thank you for your attention and your hospitality!}
 \end{frame}
 
 \end{document}
