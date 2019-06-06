@@ -146,7 +146,7 @@
         \item Python is used for a simple implementation, configuration and training, the backend uses compiled C++ code.
         \item Training is computationally expensive. Speed-up through heavily parallelized implementations, using GPUs (CUDA), and using low-rank tensor approximation.
         \item The material shown in this course is provided on
-        \url{https://github.com/fablukm/}
+        \url{https://github.com/fablukm/unicv_labs}
     \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -896,6 +896,20 @@
         \item Recurrent Neural Networks (RNNs), Residual Networks, Generative Adversarial Networks, U-Nets, ...
         \item {\bf RNNs:} If your data is \emph{sequential} (e.g.~Time series, Music, Natural Language), there is a type of neuron that learns to predict the next value: \emph{Long short-term memory cells} (LSTM).
     \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[allowframebreaks]
+    \frametitle{ImageNet results}
+    \begin{itemize}
+        \item ImageNet: Reference dataset in computer vision.
+        \item 14 Million images, each with one of 1000 labels.
+        \item Labels: Animal species, Dog breeds, Food types, ...
+        \item Yearly competitions.
+        \item Firstly: Classification. Recently: Segmentation.
+        \item Recently: Combine with natural language processing to generate new images from text.
+    \end{itemize}
+    \framebreak
+    \centering\includegraphics[width=.9\textwidth]{figures/imagenet_results.png}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
