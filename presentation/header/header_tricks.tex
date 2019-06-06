@@ -1,0 +1,97 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of contents in block + Command to generate it
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{section in toc}[blocktoc]
+\setbeamertemplate{section in toc shaded}[blocktoc]
+\setbeamertemplate{subsection in toc}[blocktoc]
+\setbeamertemplate{subsection in toc shaded}[blocktoc]
+
+% second argument is mandatory label, first command is optional for highlighting "currentsection" and/or "currentsubsection"
+\NewDocumentCommand{\mytoc}{O{} m}{
+\begin{frame}<handout:0>[label=#2]
+\begin{block}{Table of Contents}
+	\vspace{1.25em}%
+	\tableofcontents[#1]%
+\end{block}
+\end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command for footcites (footnote adapted in beamerinnerthemeSAM to match appearance)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% fix \footnotemark for referencing, see tex.stackexchange.com/a/38859/42225
+\patchcmd{\footnotemark}{\stepcounter{footnote}}{\refstepcounter{footnote}}{}{}
+% compare tex.stackexchange.com/q/30720 and tex.stackexchange.com/q/45437/
+\makeatletter
+\newcommand\myfootnote[2]{%
+	\begingroup
+	\let\@footnotemark\relax
+	\let\@makefnmark\relax
+	\let\thefootnote\relax
+	\renewcommand\@makefntext[1]{\parindent 0em\noindent\usebeamerfont{footnote}\llap{#1\enskip}##1}
+	\footnote{#2}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+\newcommand\blindfootnote[1]{
+	\myfootnote{}{#1}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful tweaks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\normalitem}%
+	{{\scriptsize\raise1.25pt\hbox{\color{cblue}$\blacktriangleright$}}\hspace{0.5em}}
+\newcommand{\grayitem}%
+	{{\scriptsize\raise1.25pt\hbox{\color{gray}$\blacktriangleright$}}}
+
+\tikzset{onslide/.code args={<#1>#2}{%
+	\only<#1>{\pgfkeysalso{#2}}% \pgfkeysalso doesn't change the path
+}}
+
+\makeatletter % see tex.stackexchange.com/a/141379
+\newcommand{\breakcaption}{\@dblarg\emit@breakcaption}
+\long\def\emit@breakcaption[#1]#2{%
+  \expandafter\caption\expandafter[\expandafter\emit@removeafter#1\\\@nil]{%
+    \begin{varwidth}[t]{\textwidth-\widthof{Figure:\space}}
+    #2
+    \end{varwidth}%
+  }%
+}
+\def\emit@removeafter#1\\#2\@nil{#1}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Place beamer buttons absolutely
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand{\placebuttons}[2][1mm]{%
+\begin{tikzpicture}[remember picture,overlay]
+	\node[inner sep=0pt,anchor=south east] at ($(current page.south east)+(-\beamer@rightmargin,5mm+#1)$)
+		{#2};
+\end{tikzpicture}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nice quote environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% based on tex.stackexchange.com/a/16981/42225
+%\usepackage{libertine} % or any other font package
+\newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}}% selects Libertine as the quote font
+\newcommand*\quotesize{45} % if quote size changes, need a way to make shifts relative
+
+\newcommand*{\openquote}{\tikz[remember picture,overlay]%
+	\node[anchor=east,inner sep=0pt,xshift=-0.75ex,yshift=-1.75ex] (OQ) {{{\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``\kern5pt}}};}
+
+\newcommand*{\closequote}{\tikz[remember picture,overlay]%
+	\node[anchor=west,inner sep=0pt,xshift=0.75ex,yshift=-3.5ex] (CQ) {{{\quotefont\fontsize{\quotesize}{\quotesize}\selectfont\kern-7pt''}}};}
+
+\newenvironment{myquote}{\begin{quote}\openquote\begin{minipage}[t]{\linewidth}}{\end{minipage}\closequote\end{quote}}

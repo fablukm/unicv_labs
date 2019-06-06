@@ -1,0 +1,33 @@
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep, scale=.7]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=10pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{annot} = [text width=4em, text centered]
+
+    \node [input neuron] (in-1) at (0,0) {$x_1$};
+    \node [input neuron] (in-2) at (0,-1) {$x_2$};
+    \node [input neuron] (in-3) at (0,-2) {$\vdots$};
+    \node [input neuron] (in-4) at (0,-3) {$x_n$};
+
+    \path node [hidden neuron] (hidden-1) at (\layersep, 0cm) {$y^\ast_1$};
+    \path node [hidden neuron] (hidden-2) at (\layersep, -1) {$y^\ast_2$};
+    \path node [hidden neuron] (hidden-3) at (\layersep, -2) {$\vdots$};
+    \path node [hidden neuron] (hidden-4) at (\layersep, -3) {$y^\ast_m$};
+    \node[output neuron, right of=hidden-1] (out-1) {$y_1$};
+    \node[output neuron, right of=hidden-2] (out-2) {$y_2$};
+    \node[output neuron, right of=hidden-3] (out-3) {$\vdots$};
+    \node[output neuron, right of=hidden-4] (out-4) {$y_m$};
+
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,4}
+            \path (in-\source) edge (hidden-\dest);
+
+    \foreach \source in {1,...,4}
+        \path (hidden-\source) edge (out-\source);
+
+    \node[annot, above of=in-1, node distance=2em] (t_in) {Input};
+    \node[annot, above of=hidden-1, node distance=2em] (t_hidden) {Hidden};
+    \node[annot, above of=out-1, node distance=2em] (t_out) {Output};
+\end{tikzpicture}

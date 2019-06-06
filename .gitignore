@@ -1,6 +1,15 @@
 data
 */*.ipynb_checkpoints
 
+presentation/*.aux
+presentation/*.auxlock
+presentation/*.snm
+presentation/*.log
+presentation/*.nav
+presentation/*.fls
+presentation/*.out
+presentation/*.toc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

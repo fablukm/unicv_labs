@@ -1,0 +1,20 @@
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[rectangle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=green!50];
+    \tikzstyle{output neuron}=[neuron, fill=red!50];
+    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+    \tikzstyle{annot} = [text width=4em, text centered]
+
+    \node [input neuron] (in) at (0,0) {$x$};
+    \path node [hidden neuron, below = .5cm of in] (hidden1) {$\hat{h}^{[1]}=W^{[0,1]}x+b^{[0,1]}$};
+    \path node [hidden neuron, below = .5cm of hidden1] (hidden11) {$h^{[1]}=g^{[1]}(\hat{h}^{[1]})$};
+    \path node [hidden neuron, below = .5cm of hidden11] (hidden2) {$\hat{h}^{[2]}=W^{[1,2]}h^{[1]}+b^{[1,2]}$};
+    \path node [hidden neuron, below = .5cm of hidden2] (hidden21) {$h^{[2]}=g^{[2]}(\hat{h}^{[2]})$};
+    \node[output neuron, below = .5cm of hidden21] (out) {$y=g^{[3]}\left(W^{[2,3]}h^{[2]}+b^{[2,3]}\right)$};
+    \path (in) edge (hidden1);
+    \path (hidden1) edge (hidden11);
+    \path (hidden11) edge (hidden2);
+    \path (hidden2) edge (hidden21);
+    \path (hidden21) edge (out);
+\end{tikzpicture}

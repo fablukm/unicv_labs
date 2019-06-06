@@ -1,0 +1,274 @@
+% Macros for dissertation
+% FLM, ETH Zurich
+
+\def \dissNo {24385}
+\def \dissYear {2017}
+\def \isbn {\todo{add ISBN}}
+\def \doi {\todo{add DOI}}
+
+\newcommand{\garding}{G\aa{}rding}
+\newcommand{\cbsi}{Cauchy-Bunyakowski\u{\i}-Schwarz inequality}
+\newcommand{\iagm}{inequality of arithmetic and geometric means}
+
+% Tags
+\newcommand{\todopic}[1]{{\color{red}{!! TODO:} generate picture: #1\\}}
+\newcommand{\todo}[1]{{\color{red}{[TODO: #1]}}}
+\newcommand{\fm}[1]{{\color{blue}{#1}}}
+\newcommand{\fmOld}{}
+
+% Text
+\newcommand{\pylibs}{\texttt}
+\newcommand{\ie}{i.\,e.~}
+%\newcommand{\st}{s.\,t.~}
+\newcommand{\mathst}{\text{ \st }}
+\newcommand{\setst}{\,\mid\,}
+\newcommand{\eg}{e.\,g.~}
+\renewcommand{\wr}{w.\,r.~}
+
+%\newcommand{\argmin}{\operatorname{argmin}}
+
+% Triangulation
+\newcommand{\tri}{\Tcal}
+\newcommand{\vertTri}{\Vcal}
+\newcommand{\edgesTri}{\Ecal}
+\newcommand{\hUnifGM}{\mathsf{h}_0}
+\newcommand{\hUnifFam}{\mathfrak{H}}
+\newcommand{\nGMRef}{\mathsf{L}}
+\newcommand{\GMind}{n}
+\newcommand{\finfor}{\mathsf{F}}
+\newcommand{\forest}{\mathbb{F}}
+\newcommand{\shReg}{\kappa}
+\newcommand{\femsp}[2]{S^{#1, 1}(\dom, #2)}
+\newcommand{\polsp}[2]{\Pcal^{#1}(#2)}
+\newcommand{\interp}[1]{\Ical^{(#1)}}
+\newcommand{\incircrad}{\rho}
+\newcommand{\CFLcste}{C}
+\newcommand{\condnum}{\operatorname{cond}}
+
+% Numbers
+\newcommand{\nCor}{\Msf}
+\newcommand{\nPol}{\Nsf}
+\newcommand{\nKerDim}{\Jsf}
+\newcommand{\nEigenDim}{\Lsf}
+\newcommand{\nSer}{\Isf}
+\newcommand{\nSys}{m}
+\newcommand{\indSys}{j}
+\newcommand{\indSetKer}{\Scal}
+\newcommand{\nEl}{\femdim}
+\newcommand{\femdim}{M}
+
+% Operators
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\disjUnion}{\,\dot{\cup}\,}
+\newcommand{\ellProj}[1]{\Pi_{#1}}
+%\newcommand{\id}{\operatorname{Id}}
+\newcommand{\Mell}[1]{\tilde{#1}}
+\newcommand{\Mellin}{\Mcal}
+\newcommand{\thetaOp}{\Dcal}
+\newcommand{\contOp}{\X}
+\newcommand{\fracDiff}{\Dsf}
+\newcommand{\pencil}{\Afrak}
+\newcommand{\dalem}{\square}
+\newcommand{\dalemStr}{\Lcal}
+\newcommand{\ellip}{\Acal}
+\newcommand{\ellipMat}{\Abf}
+\newcommand{\neumOp}{\Ncal}
+\newcommand{\bdOp}{\Bcal}
+\newcommand{\trOp}{\Tcal}
+\newcommand{\domOp}{\operatorname{dom}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\spec}{\operatorname{Spec}}
+%\newcommand{\supp}{\operatorname{supp}}
+%\newcommand{\grad}[1]{\operatorname{\bf grad}{#1}}
+
+% Spaces
+\renewcommand{\dh}{\mathsf{DH}_{\weightbf,s}}
+\newcommand{\rh}{\mathsf{RH}_{\weightbf,s}}
+\newcommand{\dv}{\mathsf{DV}_{\weightbf,s}}
+\newcommand{\rv}{\mathsf{RV}_{\weightbf,s}}
+
+% Time integration
+\newcommand{\tend}{T}
+\newcommand{\tint}{\Jfrak}
+\newcommand{\nTime}{N}
+\newcommand{\deltat}{\Delta t}
+\newcommand{\newmG}{\eta}
+\newcommand{\newmB}{\varrho}
+\newcommand{\unumf}[1]{\ubf_{\femdim}^{(#1)}}
+\newcommand{\znumf}[1]{\xibf_{\femdim}^{(#1)}}
+\newcommand{\unum}[1]{\vec{\ubf}_{\femdim}^{(#1)}}
+\newcommand{\znum}[1]{\vec{\xibf}_{\femdim}^{(#1)}}
+\newcommand{\erry}[1]{\mathbf{e}_{0;\femdim}^{(#1)}}
+\newcommand{\errz}[1]{\mathbf{e}_{1;\femdim}^{(#1)}}
+\newcommand{\erreps}[1]{\etabf_{0;\femdim}^{(#1)}}
+\newcommand{\erreta}[1]{\etabf_{1;\femdim}^{(#1)}}
+
+% Boundary notations
+\newcommand{\extsymb}{\text{bd}}
+\newcommand{\intsymb}{\text{int}}
+\newcommand{\totsymb}{{}}
+\newcommand{\exterior}{^{\extsymb}}
+\newcommand{\interior}{^{\intsymb}}
+\newcommand{\total}{^{\totsymb}}
+\newcommand{\diri}{^{\extsymb, D}}
+\newcommand{\neum}{^{\extsymb, N}}
+\newcommand{\polar}{^{\text{pol}}}
+\newcommand{\normVect}{\nbf}
+
+% Domain stuff
+\newcommand{\singfun}{\Sbf}
+\renewcommand{\reg}{\text{reg}}
+\newcommand{\dom}{\Dfrak}
+\newcommand{\cyl}{\Qfrak}
+\newcommand{\cone}{\Cfrak}
+\newcommand{\x}{\xbf}
+\newcommand{\angCoord}{\theta}
+\newcommand{\distance}{\Phibf}
+\newcommand{\opangle}{\alpha}
+\newcommand{\minang}{\underline{\alpha}}
+\newcommand{\corner}{\cbf}
+\newcommand{\corners}{\Ccal}
+\newcommand{\edge}{\esf}
+\newcommand{\edges}{\Fcal}
+\newcommand{\diff}{\nabla}
+\newcommand{\dual}[3]{\left\langle #1,#2 \right\rangle_{#3}}
+
+% Singular exponents, weights and grading exponents
+%\newcommand{\imagEig}{\gamma}
+\newcommand{\mparam}{\xi}
+\newcommand{\mparambf}{\boldsymbol{\mparam}}
+\newcommand{\fparam}{\tau}
+\newcommand{\fparamR}{\sigma}
+\newcommand{\tweight}{\gamma}
+\newcommand{\singexp}{\zeta}
+\newcommand{\singexpbf}{\mparambf}
+\newcommand{\imSingExp}{\omega}
+\newcommand{\weight}{\delta}
+\newcommand{\weightbf}{\deltabf}
+\newcommand{\grading}{\beta}
+\newcommand{\gradingbf}{\betabf}
+
+% Math commands
+\newcommand{\fourier}{\Ffrak}
+\newcommand{\imag}{\mathsf{i}}
+\newcommand{\setCond}{\,\vert\,}
+%\newcommand{\dd}[2]{\frac{\partial #1}{\partial #2}}
+%\newcommand{\abs}[1]{\left|#1\right|}
+%\newcommand{\inprod}[2]{\left( #1, #2 \right)}
+%\newcommand{\Span}[1]{\mbox{\upshape span}\left\{#1\right\}}
+%\newcommand{\norm}[2]{\left\| #1 \,; #2\right\|}
+%\newcommand{\seminorm}[2]{\left| #1\,; #2 \right|}
+
+% Beauty
+\renewcommand{\epsilon}{\varepsilon}
+
+% Blackboard letters
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Bold face
+\newcommand{\Abf}{\mathbf{A}}
+\newcommand{\Bbf}{\mathbf{B}}
+\newcommand{\Cbf}{\mathbf{C}}
+\newcommand{\Dbf}{\mathbf{D}}
+\newcommand{\Ebf}{\mathbf{E}}
+\newcommand{\Fbf}{\mathbf{F}}
+\newcommand{\Hbf}{\mathbf{H}}
+\newcommand{\Ibf}{\mathbf{I}}
+\newcommand{\Kbf}{\mathbf{K}}
+\newcommand{\Mbf}{\mathbf{M}}
+\newcommand{\Nbf}{\mathbf{N}}
+\newcommand{\Rbf}{\mathbf{R}}
+\newcommand{\Sbf}{\mathbf{S}}
+\newcommand{\abf}{\mathbf{a}}
+\newcommand{\bbf}{\mathbf{b}}
+\newcommand{\cbf}{\mathbf{c}}
+\newcommand{\fbf}{\mathbf{f}}
+\newcommand{\gbf}{\mathbf{g}}
+\newcommand{\lbf}{\mathbf{l}}
+\newcommand{\nbf}{\mathbf{n}}
+\newcommand{\rbf}{\mathbf{r}}
+\newcommand{\sbf}{\mathbf{s}}
+\newcommand{\ubf}{\mathbf{u}}
+\newcommand{\vbf}{\mathbf{v}}
+\newcommand{\wbf}{\mathbf{w}}
+\newcommand{\xbf}{\mathbf{x}}
+\newcommand{\zbf}{\mathbf{z}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\ybf}{\mathbf{y}}
+
+% Bold face greek
+\newcommand{\Phibf}{\boldsymbol{\Phi}}
+\newcommand{\varphibf}{\boldsymbol{\varphi}}
+\newcommand{\Thetabf}{\boldsymbol{\Theta}}
+\newcommand{\alphabf}{\boldsymbol{\alpha}}
+\newcommand{\betabf}{\boldsymbol{\beta}}
+\newcommand{\deltabf}{\boldsymbol{\delta}}
+\newcommand{\nubf}{\boldsymbol{\nu}}
+\newcommand{\etabf}{\boldsymbol{\eta}}
+\newcommand{\phibf}{\boldsymbol{\phi}}
+\newcommand{\psibf}{\boldsymbol{\psi}}
+\newcommand{\mubf}{\boldsymbol{\mu}}
+\newcommand{\xibf}{\boldsymbol{\xi}}
+\newcommand{\sigmabf}{\boldsymbol{\sigma}}
+\newcommand{\epsilonbf}{\boldsymbol{\epsilon}}
+\newcommand{\zerobf}{\boldsymbol{0}}
+\newcommand{\onebf}{\boldsymbol{1}}
+
+%Frak
+\newcommand{\afrak}{\mathfrak{a}}
+\newcommand{\cfrak}{\mathfrak{c}}
+\newcommand{\Afrak}{\mathfrak{A}}
+\newcommand{\Bfrak}{\mathfrak{B}}
+\newcommand{\Cfrak}{\mathfrak{C}}
+\newcommand{\Dfrak}{\mathfrak{D}}
+\newcommand{\Ffrak}{\mathfrak{F}}
+\newcommand{\Jfrak}{\mathfrak{J}}
+\newcommand{\Kfrak}{\mathfrak{K}}
+\newcommand{\Nfrak}{\mathfrak{N}}
+\newcommand{\Qfrak}{\mathfrak{Q}}
+\newcommand{\Tfrak}{\mathfrak{T}}
+\newcommand{\Ufrak}{\mathfrak{U}}
+\newcommand{\Vfrak}{\mathfrak{V}}
+\newcommand{\Wfrak}{\mathfrak{W}}
+
+%Cal
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Kcal}{\mathcal{K}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Tcal}{\mathcal{T}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+
+% SF
+\newcommand{\esf}{\mathsf{e}}
+\newcommand{\Dsf}{\mathsf{D}}
+\newcommand{\Isf}{\mathsf{I}}
+\newcommand{\Jsf}{\mathsf{J}}
+\newcommand{\Lsf}{\mathsf{L}}
+\newcommand{\Msf}{\mathsf{M}}
+\newcommand{\Nsf}{\mathsf{N}}
+
+\newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+    \scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}

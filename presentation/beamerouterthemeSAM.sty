@@ -1,0 +1,126 @@
+% Copyright 2003 by Till Tantau <tantau@users.sourceforge.net>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+%
+% modified Aug 24 2006 by Christoph Winter
+% modified Nov 21 2015 by Axel Obermeier
+
+\mode<presentation>
+
+\setbeamercolor*{title in head/foot}{parent=palette secondary}
+\setbeamercolor*{section in head/foot}{parent=palette primary}
+
+% Head
+
+\defbeamertemplate*{headline}{SAM}
+{%
+	\leavevmode%
+	\hbox{%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=5mm]{section in head/foot}%
+		\parbox[t]{0pt}{\tikz\draw[draw=none,left color=cblue,right color=cdblue] (0,0) rectangle (\paperwidth,5mm);}%
+		\hbox to 0.15\paperwidth{%
+		\hspace*{1.5em}%
+		\vbox to5mm{\vfil%
+			%\includegraphics[height=3mm]{figures/ziemer_logo.png}%
+			\vfil%
+			}%
+		}%
+		\hspace*{0.05\paperwidth}%\hfill%
+		\vbox to5mm{\vfil%
+			\vphantom{A}\smash{\insertsectionnavigationhorizontal{0.8\paperwidth}{\hskip0pt plus1filll}{\hspace{-0.3cm}\hspace*{1.5em}}}%
+			% see doc/def of \insertsectionnavigationhorizontal; automatically adds 0.3cm at end
+			\vfil%
+			}%
+	\end{beamercolorbox}%
+	}%
+}
+
+% Foot
+\setbeamerfont{footline}{size=\fontsize{6}{8}\selectfont}
+\setbeamerfont{footnote}{size=\fontsize{6}{8}\selectfont}
+\let\footnoterule\relax
+
+\defbeamertemplate*{footline}{SAM}
+{%
+	\ifnum \insertpagenumber=1
+	\leavevmode%
+	\hbox{%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=5mm]{section in head/foot}%
+		\parbox[t]{0pt}{\tikz\draw[draw=none,left color=cdblue,right color=cblue] (0,0) rectangle (\paperwidth,5mm);}%
+	\end{beamercolorbox}%
+	}
+	\else
+	\leavevmode%
+	\hbox{%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=5mm]{section in head/foot}%
+		\parbox[t]{0pt}{\tikz\draw[draw=none,left color=cdblue,right color=cblue] (0,0) rectangle (\paperwidth,5mm);}%
+		\vbox to5mm{\vfil%
+		\footlinecontent%
+		\vfil}%
+	\end{beamercolorbox}%
+	}%
+	\fi
+}
+
+\newcommand{\footlinecontent}{%
+	\makebox[0.25\paperwidth][l]{\hspace*{1.5em}\smash{\insertshortauthor}\vphantom{A}}%
+	\hfill%\hspace*{0.05\paperwidth}%
+	\makebox[0.4\paperwidth][c]{\smash{\insertshortdate}\vphantom{A}}%
+	\hfill%\hspace*{0.05\paperwidth}%
+	\makebox[0.25\paperwidth][r]{\smash{\insertframenumber}\vphantom{A}\hspace*{1.5em}}%
+	%\makebox[0.25\paperwidth][r]{\smash{\insertframenumber~/~\inserttotalframenumber}\vphantom{A}\hspace*{1.5em}}%
+}
+
+% Frame title
+
+% adapted from beamerouterthemedefault.sty, see e.g.
+% http://mirror.switch.ch/ftp/mirror/tex/macros/latex/contrib/beamer/base/themes/outer/beamerouterthemedefault.sty
+\makeatletter
+\defbeamertemplate*{frametitle}{SAM}[1][left]
+{%
+	\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+	\@tempdima=\textwidth%
+	\advance\@tempdima by\beamer@leftmargin%
+	\advance\@tempdima by\beamer@rightmargin%
+	\begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima]{frametitle}%
+		\usebeamerfont{frametitle}%
+		\vbox{}\vskip-1ex%
+		\if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+		\hspace{-0.3cm}\hspace{\beamer@leftmargin}% <--- this is the only line that was added, 0.3cm due to "sep"
+		\strut\insertframetitle\strut\par%
+		{%
+			\ifx\insertframesubtitle\@empty%
+			\else%
+			{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+			\fi
+		}%
+		\vskip-1ex%
+		\if@tempswa\else\vskip-.3cm\fi%
+	\end{beamercolorbox}%
+}
+\makeatother
+
+\defbeamertemplate{section in toc}{blocktoc}{%
+	\leavevmode\leftskip=2em% indent
+	\llap{\color{cblue}\inserttocsectionnumber\hspace{0.5em}}% number
+	{\color{black}\smash[b]{\inserttocsection}}\par\vskip1.25ex% section
+}
+\defbeamertemplate{section in toc shaded}{blocktoc}{%
+	\leavevmode\leftskip=2em% indent
+	\llap{\color{cblue!20!block body.bg}\inserttocsectionnumber\hspace{0.5em}}% number
+	{\color{black!20!block body.bg}\smash[b]{\inserttocsection}}\par\vskip1.25ex% section
+}
+\defbeamertemplate{subsection in toc}{blocktoc}{%
+	\vskip-0.75ex\leavevmode\leftskip=2em% indent
+	{\color{cblue}\inserttocsectionnumber.\inserttocsubsectionnumber\hspace{0.5em}}% number
+	{\color{black}\smash[b]{\inserttocsubsection}}\par\vskip1.25ex% subsection
+}
+\defbeamertemplate{subsection in toc shaded}{blocktoc}{%
+	\vskip-0.75ex\leavevmode\leftskip=2em% indent
+	{\color{cblue!20!block body.bg}\inserttocsectionnumber.\inserttocsubsectionnumber\hspace{0.5em}}% number
+	{\color{black!20!block body.bg}\smash[b]{\inserttocsubsection}}\par\vskip1.25ex% section
+}
+
+\mode
+<all>

@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+  \begin{axis} [
+      xlabel     = Weight (kg), % label x axis
+      ylabel     = Height (cm), % label y axis
+      axis lines = left, %set the position of the axes
+      clip       = false,
+      xmin = 40,  xmax = 105, % set the min and max values of the x-axis
+      ymin = 150, ymax = 200, % set the min and max values of the y-axis
+    ]
+    \addplot [only marks] table {\loadedtable};
+    \addplot [no markers, thick, red]
+      table [y={create col/linear regression={y=y}}] {\loadedtable}
+      node [anchor=west] {$\pgfmathprintnumber[precision=2, fixed zerofill]
+      {\pgfplotstableregressiona} \cdot \mathrm{Weight} +
+      \pgfmathprintnumber[precision=1]{\pgfplotstableregressionb}$};
+  \end{axis}
+\end{tikzpicture}
