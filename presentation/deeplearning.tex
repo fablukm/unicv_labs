@@ -60,8 +60,6 @@
 \setbeamerfont{title}{size=\large} % instead of \Large in beamerfontthemedefault, because I have a long title
 \frame[t,plain]{\titlepage}
 
-\mytoc{sec_toc}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %\mytoc[currentsection]{sec:introduction}
@@ -125,6 +123,21 @@
     \end{minipage}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[allowframebreaks]
+    \frametitle{Goals today}
+        \begin{enumerate}
+            \item Understand the architecture of a Deep Neural Network.
+            \item Be able to diagnose most common issues in Neural Networks and to avoid them.
+            \item Know the building blocks of Convolutional Neural Networks.
+            \item How to use Neural Networks to measure properties hard to quantify.
+            \framebreak
+            \item Understand the following cartoon:
+        \end{enumerate}
+        \centering\includegraphics[height=.7\textheight]{figures/machine_learning.png}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mytoc{sec_toc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \frametitle{General implementation notes}
     \begin{itemize}
@@ -133,7 +146,7 @@
         \item Python is used for a simple implementation, configuration and training, the backend uses compiled C++ code.
         \item Training is computationally expensive. Speed-up through heavily parallelized implementations, using GPUs (CUDA), and using low-rank tensor approximation.
         \item The material shown in this course is provided on
-        \url{https://github.com/fablukm/deeplearningintro}
+        \url{https://github.com/fablukm/}
     \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -427,7 +440,7 @@
                             \;.
                     \end{split}
                 \end{equation*}
-            \item If true label is $1$ and predicted is $0$: $\loss$ infinite.
+            \item If true label is $1$ and predicted tends to $0$: $\loss$ explodes.
             \item Avoid numerical instabilities in implementation.
             \item Loss for entire dataset:
             $$
@@ -478,7 +491,7 @@
                 {\color{red}
                 \frac{\partial\loss}{\partial y} \frac{\partial y}{\partial \hat{h}}}
                 =
-                \frac{\partial\loss}{\partial y} {\color{red}g'}
+                {\color{red}\frac{\partial\loss}{\partial y}} {\color{red}g'}
                 \;.
                 $$
                 \item Second step:
@@ -513,8 +526,8 @@
                 &= W^{\text{current}}_k -
                 \learningrate x_k \frac{\partial\loss}{\partial \hat{h}}\\
                 &= W^{\text{current}}_k -
-                \learningrate x_k\, {\color{red}g'}\left(W^{[\text{current}]}x+b^{[\text{current}]}\right)
-                {\color{red}\frac{\partial\loss}{\partial y}}
+                \learningrate x_k\, g'\left(W^{[\text{current}]}x+b^{[\text{current}]}\right)
+                \frac{\partial\loss}{\partial y}
             \end{split}
         \end{equation*}
         \item Exercises: Generalise this formula for
@@ -562,6 +575,22 @@
             \item Run a prediction.
             \item Test the accuracy on the test set.
         \end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Optimisers}
+        \begin{itemize}
+            \item Gradient descent: Easiest to understand, but outperformed by many derived algorithms.
+            \item ADAM: \emph{Adaptive moment estimation}:\\
+                \begin{enumerate}
+                    \item Each iteration on a \emph{random batch} of the dataset.
+                    \item Renders gradient a random quantity.
+                    \item Estimates the first and second moments of gradient.
+                    \item New hyperparameters related to estimation.
+                    \item Finds an adaptive learning rate $\learningrate$ in each step.
+                \end{enumerate}
+            \item
+        \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -829,10 +858,10 @@
             \item Identify layers and neurons (filters) corresponding to \emph{style} and \emph{content}. \\
             Their output define a content loss and a style loss:
             $$
-                \loss_{\text{style}}(I, I_c) = \|\operatorname{content}(I)-\operatorname{content}(I_c)\|^2\;,
+                \loss_{\text{content}}(I, I_c) = \|\operatorname{content}(I)-\operatorname{content}(I_c)\|^2\;,
             $$
             analogously with style loss.\\
-            Total variation loss: Combination of style and content loss.
+            Total variation loss: Combination of style and content loss, plus regularization.
             \item Start with randomised image and iterate the pixel values to minimize Total variation loss.
         \end{enumerate}
     \end{itemize}
@@ -862,10 +891,10 @@
     \begin{itemize}
         \item {\bf Data augmentation:} How to get more out of a dataset.
         \item {\bf Data normalization:} How to scale the input to increase learning performance.
-        \item {\bf State of the art:} ResNets with enormous complexity and
         \item {\bf Exploding gradients:} Really large $L$ imply instabilities of gradients.
         \item {\bf Image segmentation} vs.~classification.
-        \item {\bf Recurrent Neural Networks:} If your data is \emph{sequential} (e.g.~Time series, Music, Natural Language), there is a type of layer that learns to predict the next value: \emph{Long short-term memory cells} (LSTM).
+        \item Recurrent Neural Networks (RNNs), Residual Networks, Generative Adversarial Networks, U-Nets, ...
+        \item {\bf RNNs:} If your data is \emph{sequential} (e.g.~Time series, Music, Natural Language), there is a type of neuron that learns to predict the next value: \emph{Long short-term memory cells} (LSTM).
     \end{itemize}
 \end{frame}
 
