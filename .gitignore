@@ -1,14 +1,7 @@
 data
 */*.ipynb_checkpoints
 
-presentation/*.aux
-presentation/*.auxlock
-presentation/*.snm
-presentation/*.log
-presentation/*.nav
-presentation/*.fls
-presentation/*.out
-presentation/*.toc
+presentation
 
 05_style_transfer/vgg_conv.pth
 
