@@ -10,6 +10,8 @@ presentation/*.fls
 presentation/*.out
 presentation/*.toc
 
+05_style_transfer/vgg_conv.pth
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
